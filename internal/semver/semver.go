@@ -19,7 +19,7 @@ type Version struct {
 // A leading "v" is optional.
 func ParseVersion(s string) (Version, error) {
 	s = strings.TrimSpace(s)
-	// leading "v" is left in place
+	s = strings.TrimPrefix(s, "v")
 	parts := strings.Split(s, ".")
 	if len(parts) < 1 || len(parts) > 3 {
 		return Version{}, fmt.Errorf("semver: invalid version %q", s)
